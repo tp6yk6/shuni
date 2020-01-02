@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"os"
 	//"strconv"
+	"math/rand" //亂數
 
 	"github.com/line/line-bot-sdk-go/linebot"
 )
@@ -51,8 +52,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
 				reply := message.Text
+				choose :=[] string {"幹不要罵髒話啦", "衝三毀", "幹拎" } 
+				r := rand.New(rand.NewSource(time.Now().UnixNano()))
 				if message.Text == "幹" {
-					reply = "幹不要罵髒話啦"
+					reply = choose[r.Intn(len(choose))]
 				}
 				if _, err = bot.ReplyMessage(event.ReplyToken,linebot.NewTextMessage(reply)).Do(); err != nil {
 					log.Print(err)
