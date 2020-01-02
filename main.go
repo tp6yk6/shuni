@@ -51,9 +51,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
 				quota, err := bot.GetMessageQuota().Do()
-				if _, err = bot.ReplyMessage(event.ReplyToken,
-				 linebot.NewTextMessage(message.ID+":"+message.Text+" OK! remain 
-				 	message:"+strconv.FormatInt(quota.Value, 10))).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken,linebot.NewTextMessage(message.ID+":"+message.Text+" OK! remain message:"+strconv.FormatInt(quota.Value, 10))).Do(); err != nil {
 					log.Print(err)
 			}
 		}
