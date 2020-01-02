@@ -19,7 +19,7 @@ import (
 	"os"
 	//"strconv"
 	"math/rand" //亂數
-	"time"
+	"time"//用來當亂數的種子碼,行57
 
 	"github.com/line/line-bot-sdk-go/linebot"
 )
