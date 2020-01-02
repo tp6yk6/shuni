@@ -7,7 +7,7 @@ import (
 	"os"
 	//"strconv"
 	"math/rand" //亂數
-	"time"//用來當亂數的種子碼,行57
+	"time"//用來當亂數的種子碼,行45
 
 	"github.com/line/line-bot-sdk-go/linebot"
 )
@@ -41,9 +41,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
 				reply := message.Text
-				choose :=[] string {"幹不要罵髒話啦", "衝三毀", "幹拎" } 
+				choose :=[] string {"早安", "你也好啊", "今天放自己一天假吧" } 
 				r := rand.New(rand.NewSource(time.Now().UnixNano()))
-				if message.Text == "幹" {
+				if message.Text == "早安" {
 					reply = choose[r.Intn(len(choose))]
 				}
 				if _, err = bot.ReplyMessage(event.ReplyToken,linebot.NewTextMessage(reply)).Do(); err != nil {
