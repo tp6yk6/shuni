@@ -26,7 +26,7 @@ var bot *linebot.Client
 
 func main() {
 	var err error
-	bot, err = linebot.New(os.Getenv("7f429e5e0a1c48de9ffacb668eda4b56"), os.Getenv("fyHN9FqU0g2pOfX3d1jG0ZHxdU75biicfisoJTGBpuW/WwWghm1DwipvW9hG4fEo5GJGSGXKAsccP1wsqek+LEf08R0U5qIW1q7sK8DuYzME6erVbzOXmNOTLF+X2FvXJh6EXbVLpEt/RzXcLVP1qwdB04t89/1O/w1cDnyilFU="))
+	bot, err = linebot.New("7f429e5e0a1c48de9ffacb668eda4b56", "fyHN9FqU0g2pOfX3d1jG0ZHxdU75biicfisoJTGBpuW/WwWghm1DwipvW9hG4fEo5GJGSGXKAsccP1wsqek+LEf08R0U5qIW1q7sK8DuYzME6erVbzOXmNOTLF+X2FvXJh6EXbVLpEt/RzXcLVP1qwdB04t89/1O/w1cDnyilFU=")
 	log.Println("Bot:", bot, " err:", err)
 	http.HandleFunc("/callback", callbackHandler)
 	port := os.Getenv("PORT")
